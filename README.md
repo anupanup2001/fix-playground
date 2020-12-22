@@ -10,3 +10,9 @@
 * Run command `java -jar FIXimulator_0.41/dist/FIXimulator_0.41.jar`
 * Start SpringBootApp FixplaygroundApplication.main() class
 * Go to browser `http://localhost:8080`
+
+# References
+* Blox Material - CSS Framework for UI: https://material.src.zone/components
+* Material Design Foundation - https://material.io/design/foundation-overview
+* Spring MVC - https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-controller
+* websocket with Spring - https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket-stomp-client
