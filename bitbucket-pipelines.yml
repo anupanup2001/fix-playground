@@ -11,11 +11,11 @@ pipelines:
   default:
     - parallel:
       - step:
-          name: Build and Test
+          name: Build and Test spring-boot services
           caches:
             - maven
           script:
-            - mvn -B verify --file pom.xml
+            - mvn -B clean package --file pom.xml
           after-script:
               # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
             - pipe: atlassian/checkstyle-report:0.2.0
@@ -25,3 +25,12 @@ pipelines:
             # Run a security scan for sensitive data.
             # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
             - pipe: atlassian/git-secrets-scan:0.4.3
+      - step:
+          name: Build and test angular webapp
+          image: node:10.15.0
+          script:
+            - cd webui
+            - npm install
+            - npm run build
+          artifacts:
+            - dist/**
