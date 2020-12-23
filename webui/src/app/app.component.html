@@ -18,6 +18,10 @@
     <p>Hello Worlds</p>
     <button mdcButton (click)="connect()">Connect</button>
     <button mdcButton (click)="disconnect()">Disconnect</button>
+    <div>
+      <p> Messages </p>
+      <p *ngFor="let message of messages">{{message}}</p>
+    </div>
 
   </main>
 </div>

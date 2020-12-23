@@ -16,7 +16,7 @@ public class SessionManagerController {
     @RequestMapping("/connect")
     public String connectFix() {
         sessionManagerService.connect();
-        return "Hello World";
+        return "{\"msg\" :\"Hello World\" }";
     }
 
     @RequestMapping("/disconnect")
