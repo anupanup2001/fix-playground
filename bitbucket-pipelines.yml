@@ -11,7 +11,7 @@ pipelines:
   default:
     - parallel:
       - step:
-          name: Build and Test
+          name: Build and Test spring-boot services
           caches:
             - maven
           script:
@@ -25,3 +25,13 @@ pipelines:
             # Run a security scan for sensitive data.
             # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
             - pipe: atlassian/git-secrets-scan:0.4.3
+      - step:
+          name: Build and test angular webapp
+          image: node:10.15.0
+          script:
+            - cd webui
+            - npm install
+            - npm test
+            - npm run build
+          artifacts:
+            - dist/**
