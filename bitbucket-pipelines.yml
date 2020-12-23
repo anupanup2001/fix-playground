@@ -31,7 +31,6 @@ pipelines:
           script:
             - cd webui
             - npm install
-            - npm test
             - npm run build
           artifacts:
             - dist/**
