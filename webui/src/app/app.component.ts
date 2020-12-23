@@ -13,11 +13,15 @@ export class AppComponent {
   messages : String[] = [];
   constructor(private httpClient: HttpClient, private rxStompService: RxStompService) {}
   connect() {
+    this.rxStompService.watch('/topic/data').subscribe((message: Message) => {
+      console.log(message.body);
+      this.messages.push(message.body);
+    });
     this.httpClient.get("/api/connect").subscribe(data => {
-      this.rxStompService.watch('/topic/data').subscribe((message: Message) => {
-        console.log(message.body);
-        this.messages.push(message.body);
-      });
+      // this.rxStompService.watch('/topic/data').subscribe((message: Message) => {
+      //   console.log(message.body);
+      //   this.messages.push(message.body);
+      // });
       console.log(data);});
   }
 
