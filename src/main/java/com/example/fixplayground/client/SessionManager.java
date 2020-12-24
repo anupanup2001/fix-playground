@@ -8,10 +8,19 @@ import java.io.InputStream;
 
 public class SessionManager {
     private Initiator initiator;
+    private FixInitiator fixInitiator;
     SimpMessagingTemplate template;
 
     public SessionManager(SimpMessagingTemplate template) {
         this.template = template;
+    }
+
+    public Initiator getInitiator() {
+        return initiator;
+    }
+
+    public FixInitiator getFixInitiator() {
+        return fixInitiator;
     }
 
     public void createSession() {
@@ -21,7 +30,7 @@ public class SessionManager {
             SessionSettings settings = new SessionSettings(inputStream);
             inputStream.close();
             if (initiator == null || !initiator.isLoggedOn()) {
-                FixInitiator fixInitiator = new FixInitiator();
+                fixInitiator = new FixInitiator();
                 MessageStoreFactory messageStoreFactory = new MemoryStoreFactory();
                 LogFactory logFactory = new MyLog(template);
                 MessageFactory messageFactory = new DefaultMessageFactory();
